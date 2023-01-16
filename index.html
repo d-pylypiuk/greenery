@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Greenery</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20230116141402">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<div class="header__active" data-da=".menu__body, 500">
+					<ul class="active__list">
+						<li class="active__item">
+							<a href="" class="active__link">LOGIN <img src="img/icons/header/user.svg" alt=""></a>
+						</li>
+						<li class="active__item">
+							<a href="" class="active__link">SING UP <img src="img/icons/header/sign.svg" alt=""></a>
+						</li>
+					</ul>
+					<ul class="active__list">
+						<li class="active__item">
+							<a href="" class="active__link"><img src="img/icons/header/mail.svg" alt=""> MAILING LIST</a>
+						</li>
+						<li class="active__item">
+							<a href="" class="active__link"><img src="img/icons/header/share.svg" alt=""> SHARE</a>
+						</li>
+						<li class="active__item">
+							<a href="" class="active__link"><img src="img/icons/header/cart-menu.svg" alt=""> CART</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="header__menu-block">
+					<div class="header__logo" data-da=".header__container, 500">
+						<div class="logo__box">
+							<img src="img/logo.svg" alt="">
+						</div>
+
+					</div>
+					<nav class="header__menu">
+						<ul class="menu__body">
+							<li class="menu__item _here">
+								<a href="#" class="menu__link">
+									<img src="img/icons/header/home.svg" alt="">
+									<span>home</span>
+								</a>
+							</li>
+							<li class="menu__item">
+								<a href="#" class="menu__link">
+									<img src="img/icons/header/shop.svg" alt="">
+									<span>shop</span>
+								</a>
+							</li>
+							<li class="menu__item">
+								<a href="#" class="menu__link">
+									<img src="img/icons/header/blog.svg" alt="">
+									<span>blog</span>
+								</a>
+							</li>
+							<li class="menu__item">
+								<a href="#" class="menu__link">
+									<img src="img/icons/header/about.svg" alt="">
+									<span>about</span>
+								</a>
+							</li>
+							<li class="menu__item">
+								<a href="#" class="menu__link">
+									<img src="img/icons/header/gallery.svg" alt="">
+									<span>gallery</span>
+								</a>
+							</li>
+							<li class="menu__item">
+								<a href="#" class="menu__link">
+									<img src="img/icons/header/location.svg" alt="">
+									<span>location</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<button type="button" class="menu__icon icon-menu"><span></span></button>
+
+			</div>
+
+		</header>
+		<!-- Стилі для body -->
+		<style>
+			.lock body {
+				overflow: hidden;
+				touch-action: none;
+				overscroll-behavior: none;
+			}
+
+			.loading body {
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			.loaded body {
+				transition: opacity 0.5s ease 0s;
+				opacity: 1;
+				visibility: visible;
+			}
+		</style>
+		<div id="fls-preloader">
+			<!-- Документація: https://template.fls.guru/template-docs/modul-preloader.html -->
+			<!-- Стилі для прелоадера -->
+			<style>
+				* {
+					padding: 0px;
+					margin: 0px;
+					border: 0px;
+				}
+
+				*,
+				*:before,
+				*:after {
+					box-sizing: border-box;
+				}
+
+				/* Головний блок */
+				.fls-preloader {
+					pointer-events: none;
+					z-index: -1;
+					position: fixed;
+					width: 100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+
+				/* Блок з елементами */
+				.fls-preloader__body {
+					padding: 0.93rem;
+					max-width: 31.25rem;
+					display: flex;
+					flex-direction: column;
+				}
+
+				/* Блок з лічильником */
+				.fls-preloader__circle {
+					border-radius: 50%;
+					width: 100px;
+					height: 100px;
+				}
+
+				.fls-preloader__counter {
+					display: none;
+					z-index: 10;
+					font-size: 2rem;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					color: black;
+					border-radius: 50%;
+					width: 100px;
+					height: 100px;
+					position: relative;
+				}
+
+				.fls-preloader__counter::after {
+					border-top: 1px solid black;
+
+					position: absolute;
+					z-index: -1;
+					content: '';
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					border-radius: 50%;
+					border-top: 1px solid balck;
+					animation-name: pulse;
+					animation-duration: 1s;
+					animation-iteration-count: infinite;
+
+
+				}
+
+				@keyframes pulse {
+					100% {
+						transform: rotate(360deg);
+					}
+
+					0% {
+
+						transform: rotate(0deg);
+
+					}
+				}
+
+				/* Прогресбар */
+				.fls-preloader__line {}
+
+				/* Лінія прогресбару */
+				.fls-preloader__line span {
+					display: inline-block;
+					transition: width 0.2s ease;
+					height: 0.2rem;
+					background-color: black;
+				}
+			</style>
+			<!-- Скріпт прелоадера -->
+			<script>
+				function preloader() {
+					const preloaderImages = document.querySelector('[data-preloader]') ? document.querySelectorAll('[data-preloader] img') : document.querySelectorAll('img');
+					const preloaderContainer = document.querySelector('#fls-preloader');
+					if (preloaderImages.length) {
+						const preloaderTemplate = `
+					<div class="fls-preloader">
+						<div class="fls-preloader__body">
+							<div class="fls-preloader__counter">0%</div>
+							<div class="fls-preloader__line"><span></span></div>
+						</div>
+					</div>`;
+						document.querySelector('html').insertAdjacentHTML("beforeend", preloaderTemplate);
+
+						const
+							preloader = document.querySelector('.fls-preloader'),
+							showPecentLoad = document.querySelector('.fls-preloader__counter'),
+							showLineLoad = document.querySelector('.fls-preloader__line span'),
+							htmlDocument = document.documentElement;
+
+						let imagesLoadedCount = counter = progress = 0;
+
+						htmlDocument.classList.add('loading');
+						htmlDocument.classList.add('lock');
+
+						preloaderImages.forEach(preloaderImage => {
+							const imgClone = document.createElement('img');
+							if (imgClone) {
+								imgClone.onload = imageLoaded;
+								imgClone.onerror = imageLoaded;
+								preloaderImage.dataset.src ? imgClone.src = preloaderImage.dataset.src : imgClone.src = preloaderImage.src;
+							}
+						});
+
+						function setValueProgress(progress) {
+							showPecentLoad ? showPecentLoad.innerText = `${progress}%` : null;
+							showLineLoad ? showLineLoad.style.width = `${progress}%` : null;
+						}
+						showPecentLoad ? setValueProgress(progress) : null;
+
+						function imageLoaded() {
+							imagesLoadedCount++;
+							progress = Math.round((100 / preloaderImages.length) * imagesLoadedCount);
+							const intervalId = setInterval(() => {
+								counter >= progress ? clearInterval(intervalId) : setValueProgress(++counter);
+								counter >= 100 ? addLoadedClass() : null;
+							}, 10);
+						}
+
+						function addLoadedClass() {
+							htmlDocument.classList.add('loaded');
+							htmlDocument.classList.remove('lock');
+							htmlDocument.classList.remove('loading');
+							setInterval(() => {
+								preloader.remove();
+								preloaderContainer.remove();
+							}, 500);
+						}
+					} else {
+						preloaderContainer.remove();
+					}
+				}
+				preloader();
+			</script>
+		</div>
+
+		<main class="page__main">
+			<section class="main__slider">
+				<div class="slider__container">
+					<div class="top-shop__slider swiper">
+						<div class="top-shop__wrapper swiper-wrapper">
+							<div class="top-shop__slide swiper-slide">
+								<picture><source srcset="img/slider-background.webp" type="image/webp"><img src="img/slider-background.jpg" alt=""></picture>
+								<div class="swiper-slide__info">
+									<div class="swiper-slide signature">Save The Weekend</div>
+									<h1 class="swiper-slide title_big">
+										Awesome design Best Furniture For Your Interior.
+									</h1>
+									<div class="swiper-slide__btn btn">Explore More</div>
+								</div>
+								<div class="swiper-slide__arrow-text">
+									<span>Spacial Favric Last Longer Sofa.</span>
+									<div class="slide-text__arrow"></div>
+								</div>
+							</div>
+							<div class="top-shop__slide swiper-slide">
+								<picture><source srcset="img/slider-background.webp" type="image/webp"><img src="img/slider-background.jpg" alt=""></picture>
+								<div class="swiper-slide__info">
+									<div class="swiper-slide signature">Save The Weekend</div>
+									<h1 class="swiper-slide title_big">
+										Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores, non!
+									</h1>
+									<div class="swiper-slide__btn btn">Explore More</div>
+								</div>
+								<div class="swiper-slide__arrow-text">
+									<span>Spacial Favric Last
+										Longer Sofa.</span>
+									<div class="slide-text__arrow"></div>
+								</div>
+							</div>
+							<div class="top-shop__slide swiper-slide">
+								<picture><source srcset="img/slider-background.webp" type="image/webp"><img src="img/slider-background.jpg" alt=""></picture>
+								<div class="swiper-slide__info">
+									<div class="swiper-slide signature">Save The Weekend</div>
+									<h1 class="swiper-slide title_big">
+										Lorem ipsum dolor sit.
+									</h1>
+									<div class="swiper-slide__btn btn">Explore More</div>
+								</div>
+								<div class="swiper-slide__arrow-text">
+									<span>Spacial Favric Last
+										Longer Sofa.</span>
+									<div class="slide-text__arrow"></div>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-pagination">2000 hell</div>
+						<button type="button" class="swiper-button-prev"></button>
+						<button type="button" class="swiper-button-next"></button>
+					</div>
+				</div>
+			</section>
+			<section class="main__partners">
+				<div class="partners__container">
+					<div class="partners__logo">
+						<img src="img/logo-partners/logo1.svg" alt="">
+					</div>
+					<div class="partners__logo">
+						<img src="img/logo-partners/logo2.svg" alt="">
+					</div>
+					<div class="partners__logo">
+						<img src="img/logo-partners/logo3.svg" alt="">
+					</div>
+					<div class="partners__logo">
+						<img src="img/logo-partners/logo4.svg" alt="">
+					</div>
+					<div class="partners__logo">
+						<img src="img/logo-partners/logo5.svg" alt="">
+					</div>
+					<div class="partners__logo">
+						<img src="img/logo-partners/logo6.svg" alt="">
+					</div>
+				</div>
+			</section>
+			<!-- ============= products section =========== -->
+			<!-- =============================================== -->
+			<section class="main__products">
+				<div class="products__container">
+					<h2 class="products__title title">Our Products</h2>
+					<div data-tabs class="products-tabs">
+						<nav data-tabs-titles class="products-tabs__navigation">
+							<button type="button" class="products-tabs__title _tab-active">Single Sofa</button>
+							<button type="button" class="products-tabs__title _empty">Living Room</button>
+							<button type="button" class="products-tabs__title">Kitchen</button>
+							<button type="button" class="products-tabs__title">Bed Room</button>
+							<button type="button" class="products-tabs__title">Bath Room</button>
+							<button type="button" class="products-tabs__title _empty">Decorations</button>
+							<button type="button" class="products-tabs__title _empty">Ceramics</button>
+
+						</nav>
+						<div data-tabs-body class="products-tabs__content">
+							<div class="products-tabs__body">
+								<div class="products-tabs__row">
+									<div class="products-tabs__item">
+										<div class="products-tabs__card">
+											<div class="card__img">
+												<picture><source srcset="img/products/image-1.webp" type="image/webp"><img src="img/products/image-1.png" alt=""></picture>
+											</div>
+											<div class="card__labels">
+												<span>-20%</span>
+												<span>New</span>
+												<a href="#">Out of stoke</a>
+											</div>
+											<div class="card__buttons">
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+											</div>
+										</div>
+										<div class="product__info">
+											<div class="product__name">
+												Single Sofa
+
+											</div>
+											<div class="product__price">
+												£423.00
+											</div>
+											<div class="product__rating">
+												<span></span>
+												<span></span>
+												<span></span>
+												<span></span>
+												<span></span>
+											</div>
+										</div>
+									</div>
+
+									<div class="products-tabs__item">
+										<div class="products-tabs__card">
+											<div class="card__img">
+												<picture><source srcset="img/products/image-2.webp" type="image/webp"><img src="img/products/image-2.png" alt=""></picture>
+											</div>
+											<div class="card__labels">
+												<span>-20%</span>
+												<span>New</span>
+												<a href="#">Out of stoke</a>
+											</div>
+											<div class="card__buttons">
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+											</div>
+										</div>
+										<div class="product__info">
+											<div class="product__name">
+												Single Sofa
+
+											</div>
+											<div class="product__price">
+												£423.00
+											</div>
+											<div class="product__rating">
+												<span></span>
+												<span></span>
+												<span></span>
+												<span></span>
+												<span></span>
+											</div>
+										</div>
+									</div>
+
+									<div class="products-tabs__item">
+										<div class="products-tabs__card">
+											<div class="card__img">
+												<picture><source srcset="img/products/image-3.webp" type="image/webp"><img src="img/products/image-3.png" alt=""></picture>
+											</div>
+											<div class="card__labels">
+												<span>-20%</span>
+												<span>New</span>
+												<a href="#">Out of stoke</a>
+											</div>
+											<div class="card__buttons">
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+											</div>
+										</div>
+										<div class="product__info">
+											<div class="product__name">
+												Single Sofa
+
+											</div>
+											<div class="product__price">
+												£423.00
+											</div>
+											<div class="product__rating">
+												<span></span>
+												<span></span>
+												<span></span>
+												<span></span>
+												<span></span>
+											</div>
+										</div>
+									</div>
+
+									<div class="products-tabs__item">
+										<div class="products-tabs__card">
+											<div class="card__img">
+												<picture><source srcset="img/products/image-4.webp" type="image/webp"><img src="img/products/image-4.png" alt=""></picture>
+											</div>
+											<div class="card__labels">
+												<span>-20%</span>
+												<span>New</span>
+												<a href="#">Out of stoke</a>
+											</div>
+											<div class="card__buttons">
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+											</div>
+										</div>
+										<div class="product__info">
+											<div class="product__name">
+												Single Sofa
+
+											</div>
+											<div class="product__price">
+												£423.00
+											</div>
+											<div class="product__rating">
+												<span></span>
+												<span></span>
+												<span></span>
+												<span></span>
+												<span></span>
+											</div>
+										</div>
+									</div>
+
+									<div class="products-tabs__item">
+										<div class="products-tabs__card">
+											<div class="card__img">
+												<picture><source srcset="img/products/image-5.webp" type="image/webp"><img src="img/products/image-5.png" alt=""></picture>
+											</div>
+											<div class="card__labels">
+												<span>-20%</span>
+												<span>New</span>
+												<a href="#">Out of stoke</a>
+											</div>
+											<div class="card__buttons">
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+											</div>
+										</div>
+										<div class="product__info">
+											<div class="product__name">
+												Single Sofa
+
+											</div>
+											<div class="product__price">
+												£423.00
+											</div>
+											<div class="product__rating">
+												<span></span>
+												<span></span>
+												<span></span>
+												<span></span>
+												<span class="empty"></span>
+											</div>
+										</div>
+									</div>
+
+									<div class="products-tabs__item">
+										<div class="products-tabs__card">
+											<div class="card__img">
+												<picture><source srcset="img/products/image-6.webp" type="image/webp"><img src="img/products/image-6.png" alt=""></picture>
+											</div>
+											<div class="card__labels">
+												<span>-20%</span>
+												<span>New</span>
+												<a href="#">Out of stoke</a>
+											</div>
+											<div class="card__buttons">
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+												<a href="#" class="card__button"></a>
+											</div>
+										</div>
+										<div class="product__info">
+											<div class="product__name">
+												Single Sofa
+
+											</div>
+											<div class="product__price">
+												£423.00
+											</div>
+											<div class="product__rating">
+												<span></span>
+												<span></span>
+												<span></span>
+												<span></span>
+												<span class="empty"></span>
+											</div>
+										</div>
+									</div>
+
+
+
+								</div>
+
+
+							</div>
+							<div class="products-tabs__body">
+
+							</div>
+							<div class="products-tabs__body">
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- ============== sale section ================== -->
+			<section class="main__sale">
+				<div class="sale__img">
+					<picture><source srcset="img/sale-img-1.webp" type="image/webp"><img src="img/sale-img-1.png" alt=""></picture>
+				</div>
+				<div class="sale__container">
+
+					<div class="sale__info">
+						<div class="sale__discount title_decoration">50% OFF</div>
+						<h2 class="sale__title title">Weekend Trendy Sofa</h2>
+						<div class="sale__text text">
+							Contrary to popular belief, Lorem Ipsum is not simply random text. literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin.
+						</div>
+						<div class="sale__btn btn">View Items</div>
+					</div>
+				</div>
+			</section>
+			<section class="main__offers">
+				<div class="offers__container">
+
+					<div class="offers__list">
+						<div class="offers__item">
+							<div class="item__img">
+								<picture><source srcset="img/offers/offers-img-1.webp" type="image/webp"><img src="img/offers/offers-img-1.png" alt=""></picture>
+								<span class="offers__type">Living</span>
+							</div>
+						</div>
+						<div class="offers__item _info">
+							<div class="offers__title title">
+								Living Room Items
+							</div>
+							<div class="offers__text text">
+								Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur.
+							</div>
+							<a href="#" class="offers__btn btn">Read More</a>
+						</div>
+					</div>
+
+					<div class="offers__list">
+						<div class="offers__item">
+							<div class="item__img">
+								<picture><source srcset="img/offers/offers-img-2.webp" type="image/webp"><img src="img/offers/offers-img-2.png" alt=""></picture>
+								<span class="offers__type">Dining</span>
+							</div>
+						</div>
+						<div class="offers__item _info">
+							<div class="offers__title title">
+								Trendy Dining Table
+
+							</div>
+							<div class="offers__text text">
+								Contrary to popular belief, Lorem Ipsum is not simply random text. literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin.
+							</div>
+							<a href="#" class="offers__btn btn">View Items</a>
+						</div>
+					</div>
+
+					<div class="offers__list">
+						<div class="offers__item">
+							<div class="item__img">
+								<picture><source srcset="img/offers/offers-img-3.webp" type="image/webp"><img src="img/offers/offers-img-3.png" alt=""></picture>
+								<span class="offers__type">Bed</span>
+							</div>
+						</div>
+						<div class="offers__item _info">
+							<div class="offers__title title">
+								Modern Bed
+							</div>
+							<div class="offers__text text">
+								Contrary to popular belief, Lorem Ipsum is not simply random text. literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin.
+							</div>
+							<a href="#" class="offers__btn btn">View Items</a>
+						</div>
+					</div>
+
+					<div class="offers__list">
+						<div class="offers__item">
+							<div class="item__img">
+								<picture><source srcset="img/offers/offers-img-4.webp" type="image/webp"><img src="img/offers/offers-img-4.png" alt=""></picture>
+								<span class="offers__type">Kitchen</span>
+							</div>
+						</div>
+						<div class="offers__item _info">
+							<div class="offers__title title">
+								Populer kitchen Items
+							</div>
+							<div class="offers__text text">
+								Contrary to popular belief, Lorem Ipsum is not simply random text. literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin.
+							</div>
+							<a href="#" class="offers__btn btn">View Items</a>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<section class="main__subscription">
+				<div class="subscription__container">
+					<h2 class="subscription__title title">
+						Get 30% Off
+					</h2>
+					<div class="subscription__text text">
+						Contrary to popular belief, Lorem Ipsum is not simply years old. Richard McClintock, a Latin.
+					</div>
+					<form action="#" class="subscription__form">
+						<input required class="subscription__input" type="email" placeholder="Enter Your Email">
+						<button class="subscription__btn">Subscrive</button>
+					</form>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+			<section class="footer__section">
+				<div class="footer__container">
+					<div class="footer__row">
+
+						<div class="footer__list sociale">
+							<div class="footer__logo">
+								<img src="img/logo-darck.svg" alt="">
+							</div>
+							<div class="footer__text text">
+								Contrary to popular belief, Lorem
+								Ipsum is not simply years old Latin.
+							</div>
+							<div class="footer__sociale-icons">
+								<a href="#" class="sociale-icons__item">
+
+								</a>
+								<a href="#" class="sociale-icons__item">
+
+								</a>
+								<a href="#" class="sociale-icons__item">
+
+								</a>
+								<a href="#" class="sociale-icons__item">
+
+								</a>
+							</div>
+						</div>
+
+						<ul class="footer__list explore">
+							<div class="footer-list__title title_small">Explore</div>
+							<li class="footer-list__item">
+								<a href="" class="footer-list__link">About Us</a>
+							</li>
+							<li class="footer-list__item">
+								<a href="" class="footer-list__link">Survices</a>
+							</li>
+							<li class="footer-list__item">
+								<a href="" class="footer-list__link">Our Team</a>
+							</li>
+							<li class="footer-list__item">
+								<a href="" class="footer-list__link">Trendy</a>
+							</li>
+							<li class="footer-list__item">
+								<a href="" class="footer-list__link">Gallery</a>
+							</li>
+						</ul>
+						<div class="footer__list contact">
+							<div class="footer-list__title title_small">Contact Us</div>
+							<div class="footer-list__item">
+								<p>45 Tooring High SL London SA17</p>
+								<p>United kingdoom</p>
+							</div>
+							<div class="footer-list__item">
+								<a class="footer-list__link" href="tel:018123456789">018123456789</a>
+
+
+								<a class="footer-list__link" href="#">petroger456@gmail.com</a>
+							</div>
+
+
+						</div>
+						<div class="footer__list survice">
+							<div class="footer-list__title title_small">Survice Hours</div>
+							<ul>
+								<li><span>Mon-Fri</span>09.00am - 19.00pm</li>
+								<li><span>Saturday</span>10.00am - 18.00pm</li>
+								<li><span>Sunday</span>We are Closed</li>
+							</ul>
+						</div>
+
+
+					</div>
+				</div>
+				<div class="footer__all-right">
+					<span>2021 Greenery. All Right Reserved</span>
+				</div>
+			</section>
+		</footer>
+	</div>
+	<script src="js/app.min.js?_v=20230116141402"></script>
+</body>
+
+</html>
